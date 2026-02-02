@@ -1,0 +1,42 @@
+{
+  "name": "blogprojectbackend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "dev": "nodemon index",
+    "lint": "eslint . --ext .js,.mjs,.cjs"
+  },
+  "keywords": [],
+  "author": "Umeadi Paul Chisom",
+  "license": "ISC",
+  "description": "This is a Chisco blog - a platform where users can create and manage articles learning newest technologies",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.9.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "csrf-csrf": "^4.0.3",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
+    "express-validator": "^7.3.1",
+    "file-type": "^21.3.0",
+    "fs": "^0.0.1-security",
+    "handlebars": "^4.7.8",
+    "helmet": "^8.1.0",
+    "hpp": "^0.2.3",
+    "joi": "^18.0.2",
+    "jsonwebtoken": "^9.0.3",
+    "mjml": "^4.18.0",
+    "mongo-sanitize": "^1.1.0",
+    "mongoose": "^9.1.5",
+    "morgan": "^1.10.1",
+    "multer": "^2.0.2",
+    "nodemon": "^3.1.11",
+    "resend": "^6.9.1",
+    "sanitize-html": "^2.17.0",
+    "sharp": "^0.34.5"
+  }
+}

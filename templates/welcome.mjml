@@ -1,0 +1,114 @@
+<mjml>
+  <mj-head>
+    <mj-attributes>
+      <mj-all font-family="Inter, Arial, sans-serif" />
+      <mj-text color="#374151" font-size="16px" line-height="1.6" />
+      <mj-button
+        background-color="#047857"
+        color="#ffffff"
+        font-size="15px"
+        border-radius="6px"
+        padding="14px 22px"
+      />
+    </mj-attributes>
+
+    <mj-style inline="inline">
+      a.footer-link {
+        color: #9ca3af !important;
+        text-decoration: underline;
+      }
+    </mj-style>
+  </mj-head>
+
+  <mj-body background-color="#f3f4f6">
+    <!-- LOGO HEADER -->
+    <mj-section background-color="#ffffff" padding="24px 0">
+      <mj-column>
+        <mj-image
+          width="110px"
+          src="https://res.cloudinary.com/dkwkweqca/image/upload/v1767826390/ChatGPT_Image_Jan_7__2026__11_49_00_PM-removebg-preview_bxmmwz.png"
+          alt="Chisco Blog"
+        />
+      </mj-column>
+    </mj-section>
+
+    <!-- HERO -->
+    <mj-section background-color="#047857" padding="36px 20px">
+      <mj-column>
+        <mj-text
+          align="center"
+          color="#ffffff"
+          font-size="22px"
+          font-weight="600"
+        >
+          Welcome to Chisco Blog
+        </mj-text>
+        <mj-text align="center" color="#d1fae5" font-size="15px">
+          Insightful stories. Meaningful conversations.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- MAIN CONTENT -->
+    <mj-section background-color="#ffffff" padding="32px 24px">
+      <mj-column>
+        <mj-text> Hi {{ username }}, </mj-text>
+
+        <mj-text>
+          Thank you for creating an account on <strong>Chisco Blog</strong>.
+          We’re delighted to welcome you to our growing community of readers and
+          thinkers.
+        </mj-text>
+
+        <mj-text> With your account, you can: </mj-text>
+
+        <mj-text padding-left="10px">
+          • Read and engage with carefully curated articles<br />
+          • Share your thoughts through comments and discussions<br />
+          • Stay informed with our latest posts and updates
+        </mj-text>
+
+        <mj-text>
+          Our goal is to publish content that informs, inspires, and adds value
+          to your everyday life.
+        </mj-text>
+
+        <mj-button href="https://chisco.softcodemicrosystem.com">
+          Visit Chisco Blog
+        </mj-button>
+
+        <mj-text padding-top="20px">
+          If you have any questions or need assistance, our support team is
+          always happy to help.
+        </mj-text>
+
+        <mj-text>
+          Warm regards,<br />
+          <strong>The Chisco Blog Team</strong>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- FOOTER -->
+    <mj-section background-color="#111827" padding="22px 16px">
+      <mj-column>
+        <mj-text align="center" color="#9ca3af" font-size="13px">
+          © {{ year }} Chisco Blog. All rights reserved.
+        </mj-text>
+
+        <mj-text align="center" color="#9ca3af" font-size="12px">
+          <a href="https://chisco.softcodemicrosystem.com" class="footer-link">
+            Visit Website
+          </a>
+          &nbsp;•&nbsp;
+          <a
+            href="mailto:info@chisco.softcodemicrosystem.com"
+            class="footer-link"
+          >
+            Contact Support
+          </a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
