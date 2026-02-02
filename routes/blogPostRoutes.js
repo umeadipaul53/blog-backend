@@ -14,6 +14,8 @@ const editPost = require("../controller/postController/editPost");
 const {
   getAllPosts,
   getSinglePost,
+  getMyPosts,
+  getPostsByCategory,
 } = require("../controller/postController/getPost");
 
 blogPost
@@ -41,5 +43,9 @@ blogPost
   );
 blogPost.route("/get-post/:id").get(getSinglePost);
 blogPost.route("/get-posts").get(getAllPosts);
+blogPost
+  .route("/get-my-posts")
+  .get(authenticateToken, authorizeRoles("user", "admin"), getMyPosts);
+blogPost.route("/get-posts-by-category").get(getPostsByCategory);
 
 module.exports = blogPost;

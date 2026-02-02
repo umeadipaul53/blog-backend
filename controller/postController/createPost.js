@@ -24,12 +24,12 @@ const streamUpload = (buffer, resourceType = "auto") => {
 const createPost = async (req, res, next) => {
   try {
     const userId = req.user.id;
-    const { title, subtitle, content } = req.body;
+    const { title, subtitle, content, category } = req.body;
 
     // validate input
-    if (!title || !content || !subtitle) {
+    if (!title || !content || !subtitle || !category) {
       return next(
-        new AppError("Title, subtitle and content are required", 400),
+        new AppError("Title, subtitle, content and category are required", 400),
       );
     }
 
@@ -64,6 +64,7 @@ const createPost = async (req, res, next) => {
       content,
       imageUrl,
       author: userId,
+      category,
     });
 
     res.status(201).json({

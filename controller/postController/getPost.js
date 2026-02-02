@@ -8,7 +8,7 @@ const getAllPosts = async (req, res, next) => {
     const page = Number(req.query.page) || 1;
     const limit = Number(req.query.limit) || 10;
 
-    const filter = {}; // will Add filters later (e.g., by author)
+    const filter = {};
 
     const { results: posts, pagination } = await paginate({
       model: blogPostModel,
@@ -61,4 +61,62 @@ const getSinglePost = async (req, res, next) => {
   }
 };
 
-module.exports = { getAllPosts, getSinglePost };
+const getMyPosts = async (req, res, next) => {
+  try {
+    if (!req.user) {
+      return next(new AppError("Unauthorized", 401));
+    }
+
+    const userId = req.user.id;
+
+    const filter = { author: userId };
+
+    // Fetch posts by the logged-in user
+    const posts = await blogPostModel
+      .find(filter)
+      .limit(10)
+      .sort({ createdAt: -1 })
+      .lean();
+
+    res.status(200).json({
+      status: "success",
+      message:
+        posts.length > 0 ? "Posts retrieved successfully" : "No posts found",
+      data: posts,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+const getPostsByCategory = async (req, res, next) => {
+  try {
+    const { category } = req.query;
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 10;
+
+    const filter = { category }; // filters by category
+
+    const { results: posts, pagination } = await paginate({
+      model: blogPostModel,
+      filter,
+      page,
+      limit,
+      sort: "-createdAt",
+      lean: true, // faster, returns plain JS objects
+    });
+
+    res.status(200).json({
+      status: "success",
+      message:
+        posts.length > 0 ? "Posts retrieved successfully" : "No posts found",
+      count: pagination.totalResults,
+      pagination,
+      data: posts,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { getAllPosts, getSinglePost, getMyPosts, getPostsByCategory };

@@ -1,29 +1,38 @@
-const AppError = require("../utils/AppError");
 const jwt = require("jsonwebtoken");
+const AppError = require("../utils/AppError");
+const userModel = require("../model/userModel");
 
-function authenticateToken(req, res, next) {
-  // const authHeader = req.headers["authorization"];
-  // const token = authHeader?.split(" ")[1];
-  const token = req.cookies?.accessToken;
+const authenticateToken = async (req, res, next) => {
+  const authHeader = req.headers.authorization;
+  const bearerToken = authHeader?.startsWith("Bearer ")
+    ? authHeader.split(" ")[1]
+    : null;
+
+  const token = bearerToken || req.cookies?.accessToken;
 
   if (!token) {
-    return next(new AppError("no token provided", 403));
+    return next(new AppError("No token provided", 401));
   }
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-    if (err) {
-      if (err.name === "TokenExpiredError") {
-        return next(
-          new AppError("Token expired", 401, { expiredAt: err.expiredAt }),
-        );
-      }
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-      return next(new AppError("Token invalid", 403, { message: err.message }));
+    const user = await userModel.findById(decoded.id);
+    if (!user) {
+      return next(new AppError("User no longer exists", 401));
     }
 
     req.user = user;
     next();
-  });
-}
+  } catch (err) {
+    if (err.name === "TokenExpiredError") {
+      return next(
+        new AppError("Token expired", 401, { expiredAt: err.expiredAt }),
+      );
+    }
+
+    return next(new AppError("Token invalid", 403));
+  }
+};
 
 module.exports = authenticateToken;

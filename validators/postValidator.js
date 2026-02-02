@@ -16,6 +16,11 @@ const validatePost = Joi.object({
     "string.empty": "Post content is required",
     "string.min": "Content must be at least 20 characters",
   }),
+
+  category: Joi.string()
+    .valid("NodeJs", "React", "Python", "C++", "C#")
+    .default("NodeJs")
+    .required(),
 });
 
 const validateEditPost = Joi.object({

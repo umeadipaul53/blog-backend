@@ -40,6 +40,12 @@ const blogPostSchema = new mongoose.Schema(
     content: { type: String, required: true },
     imageUrl: { type: imageSchema },
     author: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    category: {
+      type: String,
+      required: true,
+      enum: ["NodeJs", "React", "Python", "C++", "C#"],
+      default: "NodeJs",
+    },
   },
   { timestamps: true },
 );
