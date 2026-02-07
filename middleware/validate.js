@@ -28,7 +28,10 @@ const validate = (schema = null, property = "body") => {
         message: err.message.replace(/["]/g, ""),
       }));
 
-      return next(new AppError("Validation failed", 400, formattedErrors));
+      return res.status(400).json({
+        message: "Validation failed",
+        details: formattedErrors,
+      });
     }
 
     req[property] = value;

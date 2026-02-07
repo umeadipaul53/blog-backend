@@ -43,7 +43,7 @@ const blogPostSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
-      enum: ["NodeJs", "React", "Python", "C++", "C#"],
+      enum: ["NodeJs", "React", "Python", "VueJs", "NextJs"],
       default: "NodeJs",
     },
   },

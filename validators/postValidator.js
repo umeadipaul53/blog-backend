@@ -18,7 +18,7 @@ const validatePost = Joi.object({
   }),
 
   category: Joi.string()
-    .valid("NodeJs", "React", "Python", "C++", "C#")
+    .valid("NodeJs", "React", "Python", "NextJs", "VueJs")
     .default("NodeJs")
     .required(),
 });

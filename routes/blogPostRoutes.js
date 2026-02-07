@@ -16,6 +16,7 @@ const {
   getSinglePost,
   getMyPosts,
   getPostsByCategory,
+  getPartnerPost,
 } = require("../controller/postController/getPost");
 
 blogPost
@@ -47,5 +48,6 @@ blogPost
   .route("/get-my-posts")
   .get(authenticateToken, authorizeRoles("user", "admin"), getMyPosts);
 blogPost.route("/get-posts-by-category").get(getPostsByCategory);
+blogPost.route("/get-partner-post/:id").get(getPartnerPost);
 
 module.exports = blogPost;

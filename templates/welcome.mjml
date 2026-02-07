@@ -52,7 +52,7 @@
     <!-- MAIN CONTENT -->
     <mj-section background-color="#ffffff" padding="32px 24px">
       <mj-column>
-        <mj-text> Hi {{ username }}, </mj-text>
+        <mj-text> Hi {{ name }}, </mj-text>
 
         <mj-text>
           Thank you for creating an account on <strong>Chisco Blog</strong>.
