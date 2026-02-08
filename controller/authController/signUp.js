@@ -34,6 +34,7 @@ const signUp = async (req, res, next) => {
       httpOnly: true,
       secure: isProduction,
       sameSite: isProduction ? "None" : "Lax",
+      partitioned: isProduction ? true : false, // REQUIRED
       path: "/",
       maxAge: 15 * 60 * 1000, // 15 minutes
     });
