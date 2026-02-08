@@ -12,7 +12,7 @@ const cookieParser = require("cookie-parser");
 const isProduction = process.env.NODE_ENV === "production";
 
 const frontendURL = isProduction
-  ? ["https://chisco-blog-frontend.vercel.app"]
+  ? ["https://chiscoblogfrontend.vercel.app"]
   : ["http://localhost:5173"];
 
 app.use(
